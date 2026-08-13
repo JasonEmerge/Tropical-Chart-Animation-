@@ -10,23 +10,21 @@
     padding: 0;
     background: rgb(6,15,30);
   }
-  /* Locked single-screen layout: no vertical scroll */
-  .app {
-    height: 100vh;
-    height: 100dvh;
+  .page {
+    width: 100%;
     max-width: 800px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow: hidden;
   }
-  /* Hero — same geometry as the artwork */
+  /* Sky pinned at top — content scrolls up and disappears behind it */
   .hero-wrap {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgb(6,15,30);
     padding-top: 2.199%;
     padding-left: 2.601%;
     padding-right: 5.583%;
-    flex: 0 0 auto;
+    padding-bottom: 8px;
   }
   .hero {
     display: block;
@@ -35,48 +33,20 @@
     object-fit: cover;
     background: rgb(6,15,30);
   }
-  .block {
+  .body-art {
     display: block;
     width: 100%;
-    flex: 0 0 auto;
-  }
-  /* Horizontal swipe carousel for the reading blocks */
-  .carousel {
-    display: flex;
-    flex-direction: row;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    gap: 12px;
-    align-items: center;
-    flex: 0 0 auto;
-    scrollbar-width: none;
-  }
-  .carousel::-webkit-scrollbar { display: none; }
-  .card {
-    flex: 0 0 85%;
-    scroll-snap-align: center;
-  }
-  .card:first-child { margin-left: 7.5%; }
-  .card:last-child { margin-right: 7.5%; }
-  .card img {
-    display: block;
-    width: 100%;
+    position: relative;
+    z-index: 1;
   }
 </style>
 </head>
 <body>
-  <div class="app">
+  <div class="page">
     <div class="hero-wrap">
       <video id="heroVid" class="hero" src="day-to-night.mp4" muted playsinline preload="auto"></video>
     </div>
-    <img class="block" src="slice-birth-table.jpg" alt="">
-    <div class="carousel">
-      <div class="card"><img src="slice-ascendant.jpg" alt=""></div>
-      <div class="card"><img src="slice-panel.jpg" alt=""></div>
-    </div>
-    <img class="block" src="slice-unlock.jpg" alt="">
+    <img class="body-art" src="ascendant-body.jpg" alt="">
   </div>
 <script>
 (function(){
