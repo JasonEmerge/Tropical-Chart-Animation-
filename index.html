@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Your Ascendant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
 <style>
   html, body {
     margin: 0;
@@ -15,7 +17,7 @@
     max-width: 800px;
     margin: 0 auto;
   }
-  /* Sky pinned at top — content scrolls up and disappears behind it */
+  /* Sky pinned at top — content scrolls up behind it */
   .hero-wrap {
     position: sticky;
     top: 0;
@@ -33,12 +35,117 @@
     object-fit: cover;
     background: rgb(6,15,30);
   }
-  .body-art {
+  .art {
     display: block;
     width: 100%;
     position: relative;
     z-index: 1;
   }
+
+  /* Ascendant box — Jason's frame + glyph + divider, live text */
+  .asc {
+    position: relative;
+    z-index: 1;
+    margin: 2px 0.9% 0;
+    border-style: solid;
+    border-width: min(5.5vw, 44px);
+    border-image: url("asc-frame.jpg") 55 stretch;
+    background: rgb(6,15,30);
+    padding: 6px 2.5%;
+    display: flex;
+    align-items: center;
+    gap: 3%;
+  }
+  .asc-left {
+    flex: 0 0 40%;
+    display: flex;
+    align-items: center;
+    gap: 5%;
+  }
+  .asc-left img { width: 44%; }
+  .asc-label {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    color: rgb(202,172,128);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.8), 0 0 4px rgba(0,0,0,0.5);
+  }
+  .asc-label .small {
+    font-size: clamp(11px, 3vw, 15px);
+    letter-spacing: 0.12em;
+    font-weight: 500;
+    margin: 0 0 4px;
+  }
+  .asc-label .big {
+    font-size: clamp(24px, 7vw, 36px);
+    letter-spacing: 0.06em;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1;
+  }
+  .asc-divider {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 0 auto;
+    margin: 2px 0;
+  }
+  .asc-divider img { width: 9px; display: block; }
+  .asc-divider .line { flex: 1 1 auto; object-fit: fill; min-height: 10px; }
+  .asc-body {
+    flex: 1 1 auto;
+    color: rgb(232,235,242);
+    font-family: "Avenir Next", "Segoe UI", -apple-system, sans-serif;
+    font-size: clamp(14px, 3.8vw, 18px);
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+    margin: 0;
+  }
+  /* Reading panel — Jason's frame via border-image, live text inside */
+  .panel {
+    position: relative;
+    z-index: 1;
+    margin: 2px 0.9% 0;
+    border-style: solid;
+    border-width: min(5.5vw, 44px);
+    border-image: url("panel-frame.jpg") 55 stretch;
+    background: rgb(6,15,30);
+    padding: 2px 3% 10px;
+  }
+  .section {
+    display: flex;
+    align-items: flex-start;
+    gap: 3.5%;
+    margin-top: 20px;
+  }
+  .section:first-child { margin-top: 8px; }
+  .section img {
+    width: 12%;
+    flex: 0 0 auto;
+    margin-top: 26px;
+  }
+  .sec-head {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-weight: 600;
+    color: rgb(202,172,128);
+    font-size: clamp(19px, 5.4vw, 27px);
+    letter-spacing: 0.03em;
+    line-height: 1.15;
+    margin: 0 0 6px;
+    /* Gemini note: subtle dark barrier so thin gold pops on navy */
+    text-shadow: 0 1px 2px rgba(0,0,0,0.8), 0 0 4px rgba(0,0,0,0.5);
+  }
+  .sec-head .hs {
+    font-weight: 500;
+  }
+  .sec-body {
+    color: rgb(232,235,242);
+    font-family: "Avenir Next", "Segoe UI", -apple-system, sans-serif;
+    font-size: clamp(15px, 4.1vw, 19px);
+    line-height: 1.55;
+    letter-spacing: 0.015em;
+    margin: 0;
+  }
+  sup { font-size: 0.6em; }
 </style>
 </head>
 <body>
@@ -46,14 +153,58 @@
     <div class="hero-wrap">
       <video id="heroVid" class="hero" src="day-to-night.mp4" muted playsinline preload="auto"></video>
     </div>
-    <img class="body-art" src="ascendant-body.jpg" alt="">
+
+    <img class="art" src="body-top.jpg" alt="">
+
+    
+    <div class="asc">
+      <div class="asc-left">
+        <img src="glyph-pisces.jpg" alt="">
+        <div class="asc-label">
+          <p class="small">YOUR ASCENDANT</p>
+          <p class="big">PISCES</p>
+        </div>
+      </div>
+      <div class="asc-divider">
+        <img src="div-top.jpg" alt="">
+        <img class="line" src="div-mid.jpg" alt="">
+        <img src="div-bot.jpg" alt="">
+      </div>
+      <p class="asc-body">You present yourself with a gentle, adaptable style, often adjusting naturally to the people and setting around you. Others may see you as approachable, creative, and difficult to define. Your softer manner puts people at ease, while your fluid presence allows you to move comfortably between different social worlds.</p>
+    </div>
+
+    <div class="panel">
+      <div class="section">
+        <img src="icon-sun.jpg" alt="">
+        <div>
+          <h2 class="sec-head">YOUR SUN IN CANCER <span class="hs">5th House</span></h2>
+          <p class="sec-body">You express yourself with warmth, sensitivity, and a strong protective instinct, especially through creative self-expression, romance, and playful exploration. This placement highlights your need to shine through art, affection, and heartfelt creativity, and you feel most confident when you can share your emotions in ways that feel personal, expressive, and emotionally engaging to others.</p>
+        </div>
+      </div>
+      <div class="section">
+        <img src="icon-moon.jpg" alt="">
+        <div>
+          <h2 class="sec-head">YOUR MOON IN LIBRA <span class="hs">8<sup>th</sup> House</span></h2>
+          <p class="sec-body">You feel most secure when your emotional world is balanced within deep, intimate bonds. You are highly perceptive in close relationships, often acting as a mediator in moments of emotional intensity, yet you may struggle with fully confronting conflict if it disrupts your inner sense of peace. True emotional stability comes when you allow yourself to engage in honest, profound connection without sacrificing your need for fairness, trust, and mutual respect.</p>
+        </div>
+      </div>
+      <div class="section">
+        <img src="icon-career.jpg" alt="">
+        <div>
+          <h2 class="sec-head">YOUR CAREER PATH</h2>
+          <p class="sec-body">With Mars and Venus in Sagittarius in your 10th House, you thrive in work that offers freedom, creativity, and purpose. You bring ambition and personal magnetism to your public life and succeed when you can inspire others, explore new ideas, and continue expanding your world.</p>
+        </div>
+      </div>
+    </div>
+
+    <img class="art" src="unlock.jpg" alt="">
   </div>
 <script>
 (function(){
   var v = document.getElementById('heroVid');
   var done = false;
   function start(){ v.play().catch(function(){}); }
-  v.addEventListener('ended', function(){ done = true; }); // hold final pose
+  v.addEventListener('ended', function(){ done = true; });
   v.addEventListener('pointerdown', function(){
     if (done) { done = false; v.currentTime = 0; v.play().catch(function(){}); }
   });
