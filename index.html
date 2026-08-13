@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Your Ascendant</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: rgb(6,15,30);
+  }
+  .page {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  /* Hero slot — matches artwork geometry: top strip 115/5230, left 136/5230, width 4802/5230, aspect 4802:2043 */
+  .hero-wrap {
+    padding-top: 2.199%;
+    padding-left: 2.601%;
+    padding-right: 5.583%;
+  }
+  .hero {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4802 / 2043;
+    object-fit: cover;
+    background: rgb(6,15,30);
+  }
+  .body-art {
+    display: block;
+    width: 100%;
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="hero-wrap">
+      <video id="heroVid" class="hero" src="day-to-night.mp4" muted playsinline preload="auto" poster=""></video>
+    </div>
+    <img class="body-art" src="ascendant-body.jpg" alt="">
+  </div>
+<script>
+(function(){
+  var v = document.getElementById('heroVid');
+  var done = false;
+  function start(){ v.play().catch(function(){}); }
+  v.addEventListener('ended', function(){ done = true; }); // hold final pose
+  v.addEventListener('pointerdown', function(){
+    if (done) { done = false; v.currentTime = 0; v.play().catch(function(){}); }
+  });
+  start();
+  // iOS autoplay safety: first touch anywhere starts it if blocked
+  document.addEventListener('pointerdown', function once(){
+    if (v.paused && !done) start();
+    document.removeEventListener('pointerdown', once);
+  });
+})();
+</script>
+</body>
+</html>
