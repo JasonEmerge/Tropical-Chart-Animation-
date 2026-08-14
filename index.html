@@ -23,10 +23,7 @@
     top: 0;
     z-index: 10;
     background: rgb(6,15,30);
-    padding-top: 2.199%;
-    padding-left: 2.601%;
-    padding-right: 5.583%;
-    padding-bottom: 8px;
+    padding: 0 0 8px;
   }
   .hero {
     display: block;
@@ -38,6 +35,13 @@
   .art {
     display: block;
     width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+  .unlock {
+    display: block;
+    width: 72%;
+    margin: 16px auto 30px;
     position: relative;
     z-index: 1;
   }
@@ -199,7 +203,7 @@
       </div>
     </div>
 
-    <img class="art" src="unlock.jpg" alt="">
+    <img class="unlock" src="unlock.jpg" alt="">
   </div>
 <script>
 (function(){
