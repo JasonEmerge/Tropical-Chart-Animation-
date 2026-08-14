@@ -14,12 +14,7 @@
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
-  }
-  /* Hero slot — matches artwork geometry: top strip 115/5230, left 136/5230, width 4802/5230, aspect 4802:2043 */
-  .hero-wrap {
-    padding-top: 2.199%;
-    padding-left: 2.601%;
-    padding-right: 5.583%;
+    overflow: hidden;
   }
   .hero {
     display: block;
@@ -28,17 +23,18 @@
     object-fit: cover;
     background: rgb(6,15,30);
   }
+  /* Artwork has baked margins (136 left, 292 right of 5230).
+     Scale so the 4802 content span fills the page, crop the rest. */
   .body-art {
     display: block;
-    width: 100%;
+    width: 108.913%;
+    margin-left: -2.832%;
   }
 </style>
 </head>
 <body>
-  <div class="page">
-    <div class="hero-wrap">
-      <video id="heroVid" class="hero" src="day-to-night.mp4" muted playsinline preload="auto" poster=""></video>
-    </div>
+<div class="page">
+    <video id="heroVid" class="hero" src="day-to-night.mp4" muted playsinline preload="auto" poster=""></video>
     <img class="body-art" src="ascendant-body.jpg" alt="">
   </div>
 <script>
