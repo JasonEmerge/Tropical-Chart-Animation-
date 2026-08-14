@@ -57,12 +57,13 @@
     gap: 3%;
   }
   .asc-left {
-    flex: 0 0 40%;
+    flex: 0 0 42%;
+    min-width: 0;
     display: flex;
     align-items: center;
     gap: 5%;
   }
-  .asc-left img { width: 44%; }
+  .asc-left img { width: 40%; flex: 0 0 auto; }
   .asc-label {
     font-family: "Cormorant Garamond", Georgia, serif;
     color: rgb(202,172,128);
@@ -75,8 +76,8 @@
     margin: 0 0 4px;
   }
   .asc-label .big {
-    font-size: clamp(24px, 7vw, 36px);
-    letter-spacing: 0.06em;
+    font-size: clamp(19px, 5.6vw, 34px);
+    letter-spacing: 0.04em;
     font-weight: 600;
     margin: 0;
     line-height: 1;
@@ -136,6 +137,7 @@
   }
   .sec-head .hs {
     font-weight: 500;
+    white-space: nowrap;
   }
   .sec-body {
     color: rgb(232,235,242);
